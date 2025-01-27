@@ -31,7 +31,7 @@ sudo docker run --name keycloak -p 8443:8443 \
 -e KC_HOSTNAME=keycloak.iamlab.depaulseclabs.com \
 -e KEYCLOAK_ADMIN=admin \
 -e KEYCLOAK_ADMIN_PASSWORD=change_me \
-quay.io/keycloak/keycloak:23.0.3 start \
+quay.io/keycloak/keycloak:26.1.0 start \
 --db=postgres --features=token-exchange \
 --db-url="jdbc:postgresql://10.77.10.3/postgres" \
 --db-username=postgres --db-password=keycloak \
