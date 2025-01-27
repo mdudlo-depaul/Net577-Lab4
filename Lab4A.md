@@ -25,20 +25,26 @@ copy truststore.jks into /home/iamadmin/certs
    ```
 
 ### Create IDP Container
-```bash
-sudo docker run --name keycloak -p 8443:8443 \
--v /home/iamadmin/certs/:/certs \
--e KC_HOSTNAME=keycloak.iamlab.depaulseclabs.com \
--e KEYCLOAK_ADMIN=admin \
--e KEYCLOAK_ADMIN_PASSWORD=change_me \
-quay.io/keycloak/keycloak:26.1.0 start \
---db=postgres --features=token-exchange \
---db-url="jdbc:postgresql://10.77.10.3/postgres" \
---db-username=postgres --db-password=keycloak \
---https-trust-store-file=/certs/truststore.jks \
---https-trust-store-password=keycloak \
---spi-truststore-file-file=/certs/truststore.jks \
---spi-truststore-file-password=keycloak \
---https-certificate-file=/certs/keycloak.cer \
---https-certificate-key-file=/certs/keycloak.pem
-```
+1. Create container, monitor the terminal output for errors
+    - ```bash
+      sudo docker run --name keycloak -p 8443:8443 \
+      -v /home/iamadmin/certs/:/certs \
+      -e KC_HOSTNAME=keycloak.iamlab.depaulseclabs.com \
+      -e KEYCLOAK_ADMIN=admin \
+      -e KEYCLOAK_ADMIN_PASSWORD=change_me \
+      quay.io/keycloak/keycloak:26.1.0 start \
+      --db=postgres --features=token-exchange \
+      --db-url="jdbc:postgresql://10.77.10.3/postgres" \
+      --db-username=postgres --db-password=keycloak \
+      --https-trust-store-file=/certs/truststore.jks \
+      --https-trust-store-password=keycloak \
+      --spi-truststore-file-file=/certs/truststore.jks \
+      --spi-truststore-file-password=keycloak \
+      --https-certificate-file=/certs/keycloak.cer \
+      --https-certificate-key-file=/certs/keycloak.pem
+      ```
+2. Stop the container and restart it in non-interactive mode
+    - Enter CRTL+C on the terminal
+    - ```
+      sudo docker start keycloak
+      ```
