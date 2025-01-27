@@ -16,8 +16,8 @@ sudo apt install openjdk-21-jre-headless
 ### Create Java Keystore
 ```bash
 keytool -importcert -file <yourname>-ca.cer -keystore truststore.jks
-copy truststore.jks into /home/iamadmin/certs
 ```
+copy truststore.jks into /home/iamadmin/certs
 
 ### Create DB Container
 1. ```bash
@@ -33,7 +33,7 @@ sudo docker run --name keycloak -p 8443:8443 \
 -e KEYCLOAK_ADMIN_PASSWORD=change_me \
 quay.io/keycloak/keycloak:23.0.3 start \
 --db=postgres --features=token-exchange \
---db-url="jdbc:postgresql://10.13.61.3/postgres" \
+--db-url="jdbc:postgresql://10.77.10.3/postgres" \
 --db-username=postgres --db-password=keycloak \
 --https-trust-store-file=/certs/truststore.jks \
 --https-trust-store-password=keycloak \
