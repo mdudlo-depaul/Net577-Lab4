@@ -1,6 +1,6 @@
 ### Install Java Tools
 ```bash
-sudo apt install openjdk-19-jre-headless
+sudo apt install openjdk-21-jre-headless
 ```
 
 ### Create Keycloak Certificate
@@ -13,6 +13,11 @@ sudo apt install openjdk-19-jre-headless
     - ```powershell
       certreq -submit -attrib -certificateTemplate:webserver
       ```
+### Create Java Keystore
+```bash
+keytool -importcert -file <yourname>-ca.cer -keystore truststore.jks
+copy truststore.jks into /home/iamadmin/certs
+```
 
 ### Create DB Container
 1. ```bash
