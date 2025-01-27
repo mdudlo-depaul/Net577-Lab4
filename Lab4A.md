@@ -21,13 +21,14 @@ copy truststore.jks into /home/iamadmin/certs
 
 ### Create DB Container
 1. ```bash
-   sudo docker run --name keycloak-postgres -e POSTGRES_PASSWORD=keycloak -p 5432:5432 -d postgres
+   sudo docker run --name keycloak-postgres --restart unless-stopped -e POSTGRES_PASSWORD=keycloak -p 5432:5432 -d postgres
    ```
 
 ### Create IDP Container
 1. Create container, monitor the terminal output for errors
     - ```bash
       sudo docker run --name keycloak -p 8443:8443 \
+      --restart unless-stopped \
       -v /home/iamadmin/certs/:/certs \
       -e KC_HOSTNAME=keycloak.iamlab.depaulseclabs.com \
       -e KEYCLOAK_ADMIN=admin \
