@@ -21,7 +21,7 @@ copy truststore.jks into /home/iamadmin/certs
 
 ### Create DB Container
 1. ```bash
-   sudo docker run --name keycloak-postgres --restart unless-stopped -e POSTGRES_PASSWORD=keycloak -p 5432:5432 -d postgres
+   sudo docker run --name keycloak-postgres --restart unless-stopped -e POSTGRES_PASSWORD=keycloak -p 5432:5432 -d postgres:17.6
    ```
 
 ### Create IDP Container
@@ -33,9 +33,9 @@ copy truststore.jks into /home/iamadmin/certs
       -e KC_HOSTNAME=keycloak.iamlab.depaulseclabs.com \
       -e KEYCLOAK_ADMIN=admin \
       -e KEYCLOAK_ADMIN_PASSWORD=change_me \
-      quay.io/keycloak/keycloak:26.1.0 start \
+      quay.io/keycloak/keycloak:26.4.0 start \
       --db=postgres --features=token-exchange \
-      --db-url="jdbc:postgresql://10.77.10.3/postgres" \
+      --db-url="jdbc:postgresql://10.77.<x>.3/postgres" \
       --db-username=postgres --db-password=keycloak \
       --https-trust-store-file=/certs/truststore.jks \
       --https-trust-store-password=keycloak \

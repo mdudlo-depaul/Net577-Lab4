@@ -20,7 +20,7 @@ PHP_UPLOAD_LIMIT=100
 
 ### MYSQL Container
 ```bash
-sudo docker run --name snipe-mysql --restart unless-stopped --env-file=my_env_file --mount source=snipesql-vol,target=/var/lib/mysql -d -P mysql:5.6
+sudo docker run --name snipe-mysql --restart unless-stopped --env-file=my_env_file --mount source=snipesql-vol,target=/var/lib/mysql -d -P mysql:5.7
 ```
 
 ### SNIPE-IT Container
